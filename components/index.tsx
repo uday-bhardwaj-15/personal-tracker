@@ -1124,6 +1124,170 @@ const Index = () => {
   };
 
   // Component for the Add Habit Modal
+  // const AddHabitModal = () => {
+  //   const colorOptions = [
+  //     "#9b87f5",
+  //     "#64b5f6",
+  //     "#ff7043",
+  //     "#81c784",
+  //     "#ba68c8",
+  //     "#4fc3f7",
+  //     "#ffb74d",
+  //   ];
+  //   const unitOptions = [
+  //     "minutes",
+  //     "hours",
+  //     "glasses",
+  //     "pages",
+  //     "steps",
+  //     "calories",
+  //   ];
+
+  //   return (
+  //     <AnimatePresence>
+  //       {showAddHabit && (
+  //         <AnimatePresence>
+  //           <motion.div
+  //             key="backdrop"
+  //             initial={{ opacity: 0 }}
+  //             animate={{ opacity: 1 }}
+  //             exit={{ opacity: 0 }}
+  //             onClick={() => setShowAddHabit(false)}
+  //             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+  //           />
+
+  //           <motion.div
+  //             key="modal"
+  //             initial={{ opacity: 0, y: 50, scale: 0.9 }}
+  //             animate={{ opacity: 1, y: 0, scale: 1 }}
+  //             exit={{ opacity: 0, y: 50, scale: 0.9 }}
+  //             transition={{ type: "spring", damping: 20 }}
+  //             className="fixed left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6 bg-gradient-to-br from-[#181035] to-[#2d1b5a] rounded-xl shadow-2xl z-50 border border-white/10"
+  //           >
+  //             <div className="flex justify-between items-center mb-6">
+  //               <h2 className="text-xl font-bold text-white">Add New Habit</h2>
+  //               <button
+  //                 onClick={() => setShowAddHabit(false)}
+  //                 className="text-gray-400 hover:text-white"
+  //               >
+  //                 <svg
+  //                   xmlns="http://www.w3.org/2000/svg"
+  //                   className="h-6 w-6"
+  //                   fill="none"
+  //                   viewBox="0 0 24 24"
+  //                   stroke="currentColor"
+  //                 >
+  //                   <path
+  //                     strokeLinecap="round"
+  //                     strokeLinejoin="round"
+  //                     strokeWidth={2}
+  //                     d="M6 18L18 6M6 6l12 12"
+  //                   />
+  //                 </svg>
+  //               </button>
+  //             </div>
+
+  //             <div className="space-y-4">
+  //               <div>
+  //                 <label className="block text-sm font-medium text-gray-300 mb-1">
+  //                   Habit Name
+  //                 </label>
+  //                 <input
+  //                   type="text"
+  //                   placeholder="e.g., Drink Water"
+  //                   value={newHabit.name}
+  //                   onChange={(e) =>
+  //                     setNewHabit({ ...newHabit, name: e.target.value })
+  //                   }
+  //                   className="bg-white/10 text-white w-full py-2 px-3 rounded border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
+  //                 />
+  //               </div>
+
+  //               <div className="grid grid-cols-2 gap-4">
+  //                 <div>
+  //                   <label className="block text-sm font-medium text-gray-300 mb-1">
+  //                     Target
+  //                   </label>
+  //                   <input
+  //                     type="number"
+  //                     placeholder="8"
+  //                     value={newHabit.target || ""}
+  //                     onChange={(e) =>
+  //                       setNewHabit({
+  //                         ...newHabit,
+  //                         target: parseInt(e.target.value) || 0,
+  //                       })
+  //                     }
+  //                     className="bg-white/10 text-white w-full py-2 px-3 rounded border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
+  //                   />
+  //                 </div>
+
+  //                 <div>
+  //                   <label className="block text-sm font-medium text-gray-300 mb-1">
+  //                     Unit
+  //                   </label>
+  //                   <select
+  //                     value={newHabit.unit}
+  //                     onChange={(e) =>
+  //                       setNewHabit({ ...newHabit, unit: e.target.value })
+  //                     }
+  //                     className="bg-white/10 text-white w-full py-2 px-3 rounded border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
+  //                   >
+  //                     <option value="" className="bg-gray-800">
+  //                       Select a unit
+  //                     </option>
+  //                     {unitOptions.map((unit) => (
+  //                       <option key={unit} value={unit} className="bg-gray-800">
+  //                         {unit}
+  //                       </option>
+  //                     ))}
+  //                   </select>
+  //                 </div>
+  //               </div>
+
+  //               <div>
+  //                 <label className="block text-sm font-medium text-gray-300 mb-2">
+  //                   Color
+  //                 </label>
+  //                 <div className="flex flex-wrap gap-2">
+  //                   {colorOptions.map((color) => (
+  //                     <button
+  //                       key={color}
+  //                       onClick={() => setNewHabit({ ...newHabit, color })}
+  //                       className={`w-8 h-8 rounded-full ${
+  //                         newHabit.color === color
+  //                           ? "ring-2 ring-white ring-offset-1 ring-offset-[#181035]"
+  //                           : ""
+  //                       }`}
+  //                       style={{ backgroundColor: color }}
+  //                     />
+  //                   ))}
+  //                 </div>
+  //               </div>
+
+  //               <div className="pt-4">
+  //                 <button
+  //                   onClick={handleAddHabit}
+  //                   disabled={
+  //                     !newHabit.name || !newHabit.target || !newHabit.unit
+  //                   }
+  //                   className={`w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded font-medium transition ${
+  //                     !newHabit.name || !newHabit.target || !newHabit.unit
+  //                       ? "opacity-50 cursor-not-allowed"
+  //                       : "hover:opacity-90"
+  //                   }`}
+  //                 >
+  //                   Add Habit
+  //                 </button>
+  //               </div>
+  //             </div>
+  //           </motion.div>
+  //         </AnimatePresence>
+  //       )}
+  //     </AnimatePresence>
+  //   );
+  // };
+
   const AddHabitModal = () => {
     const colorOptions = [
       "#9b87f5",
@@ -1144,23 +1308,25 @@ const Index = () => {
     ];
 
     return (
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showAddHabit && (
           <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
+              key="backdrop"
+              // initial={{ opacity: 0 }}
+              // animate={{ opacity: 1 }}
+              // exit={{ opacity: 0 }}
               onClick={() => setShowAddHabit(false)}
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
             />
 
             <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 50, scale: 0.9 }}
-              transition={{ type: "spring", damping: 20 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6 bg-gradient-to-br from-[#181035] to-[#2d1b5a] rounded-xl shadow-2xl z-50 border border-white/10"
+              key="modal"
+              // initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              // animate={{ opacity: 1, y: 0, scale: 1 }}
+              // exit={{ opacity: 0, y: 50, scale: 0.9 }}
+              // transition={{ type: "spring", damping: 20 }}
+              className="fixed left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6 bg-gradient-to-br from-[#181035] to-[#2d1b5a] rounded-xl shadow-2xl z-50 border border-white/10"
             >
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-white">Add New Habit</h2>
@@ -1190,7 +1356,7 @@ const Index = () => {
                   <label className="block text-sm font-medium text-gray-300 mb-1">
                     Habit Name
                   </label>
-                  <input
+                  <motion.input
                     type="text"
                     placeholder="e.g., Drink Water"
                     value={newHabit.name}
@@ -1285,7 +1451,6 @@ const Index = () => {
       </AnimatePresence>
     );
   };
-
   // Footer component
   const Footer = () => {
     return (
@@ -1316,8 +1481,8 @@ const Index = () => {
         <Footer />
       </div>
 
-      <SettingsModal />
       <AddHabitModal />
+      <SettingsModal />
     </div>
   );
 };
